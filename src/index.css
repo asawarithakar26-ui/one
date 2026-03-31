@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  /* Colors from Stitch Cinematic Intelligence Design System */
+  --bg-color: #0d0e10;
+  --surface: #0d0e10;
+  --surface-bright: #2b2c2f;
+  --surface-container: #181a1c;
+  --surface-container-high: #1e2022;
+  --surface-container-highest: #242629;
+  --surface-container-low: #121316;
+  --surface-container-lowest: #000000;
+  --surface-dim: #0d0e10;
+  --surface-tint: #d0bcff;
+  --surface-variant: #242629;
+
+  --primary: #d0bcff;
+  --primary-container: #a996d7;
+  --primary-dim: #c2aff1;
+  --primary-fixed: #d0bcff;
+  --primary-fixed-dim: #c2aff1;
+
+  --secondary: #00e3fd;
+  --secondary-container: #006875;
+  --secondary-dim: #00d4ec;
+  --secondary-fixed: #26e6ff;
+  --secondary-fixed-dim: #00d7f0;
+
+  --tertiary: #ff97b5;
+  --tertiary-container: #fd81a8;
+  --tertiary-dim: #f0779d;
+  --tertiary-fixed: #ff8eb0;
+  --tertiary-fixed-dim: #f67ca3;
+
+  --on-background: #fdfcfe;
+  --on-surface: #fdfcfe;
+  --on-surface-variant: #ababad;
+
+  --on-primary: #47366f;
+  --on-primary-container: #28174f;
+  --on-secondary: #004d57;
+  --on-secondary-container: #e8fbff;
+  --on-tertiary: #6a0934;
+  --on-tertiary-container: #59002a;
+
+  --error: #ff6e84;
+  --error-container: #a70138;
+  --error-dim: #d73357;
+  --on-error: #490013;
+  --on-error-container: #ffb2b9;
+
+  --outline: #757578;
+  --outline-variant: #47484a;
+
+  /* Typography */
+  --font-display: 'Inter', sans-serif;
+  --font-headline: 'Inter', sans-serif;
+  --font-label: 'Space Grotesk', sans-serif;
+  --font-technical: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --spacing-6: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--on-background);
+  font-family: var(--font-headline);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient Scanline Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Layering & Depth Classes */
+.surface-container-low {
+  background-color: var(--surface-container-low);
+  border: none;
+  border-radius: 12px;
+}
+
+.surface-container {
+  background-color: var(--surface-container);
+  border: none;
+  border-radius: 12px;
+}
+
+.surface-container-high {
+  background-color: var(--surface-container-high);
+  border: none;
+  border-radius: 12px;
+}
+
+.surface-container-highest {
+  background-color: var(--surface-container-highest);
+  border: none;
+  border-radius: 12px;
+}
+
+/* Glass Float Effect */
+.glass-float {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(253, 252, 254, 0.04);
+  border-radius: 16px;
+}
+
+/* Typography Classes */
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-headline-md {
+  font-family: var(--font-headline);
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.text-label-md {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-surface-variant);
+}
+
+.text-technical {
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+}
+
+/* Utilities */
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.magnetic-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Aether Orb Style */
+.aether-orb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--primary), var(--secondary));
+  animation: orb-breathe 4s infinite ease-in-out;
+  box-shadow: 0 0 20px var(--secondary-fixed);
+}
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 30px var(--secondary-fixed); }
+}
+
+/* Cinematic Gradient Button */
+.btn-primary {
+  background: radial-gradient(circle at center, var(--primary), var(--primary-container));
+  color: var(--on-primary);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(208, 188, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(208, 188, 255, 0.5);
+}
+
+/* Input Fields */
+.input-cinematic {
+  background-color: var(--surface-container-highest);
+  border: none;
+  color: var(--on-surface);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: var(--font-headline);
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.input-cinematic:focus {
+  background-color: rgba(208, 188, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(208, 188, 255, 0.3);
+}
+
+/* Divider Fallback */
+.divider {
+  height: 1px;
+  background-color: var(--outline-variant);
+  opacity: 0.15;
+  width: 100%;
+}
